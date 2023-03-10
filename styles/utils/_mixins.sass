@@ -1,0 +1,22 @@
+@mixin scrollbars()
+	scrollbar-width: auto
+	scrollbar-color: #412679 #000
+	&::-webkit-scrollbar
+		width: 12px
+		@media screen and ( max-width: 900px )
+			display: none
+			width: 0
+	&::-webkit-scrollbar-track
+		background: #000
+	&::-webkit-scrollbar-thumb
+		background-color: #412679
+
+@mixin flex($direction, $align, $justify)
+	display: flex
+	flex-direction: $direction
+	align-items: $align
+	justify-content: $justify
+
+@mixin gradient()
+	background-color: hsla(300,100%,91%,1)
+	background-image: radial-gradient(at 85% 29%, hsla(250,100%,85%,1) 0px, transparent 50%), radial-gradient(at 62% 11%, hsla(217,100%,86%,1) 0px, transparent 50%), radial-gradient(at 24% 92%, hsla(261,75%,74%,1) 0px, transparent 50%), radial-gradient(at 23% 0%, hsla(341,100%,78%,1) 0px, transparent 50%), radial-gradient(at 40% 20%, hsla(24,100%,74%,1) 0px, transparent 50%), radial-gradient(at 0% 0%, hsla(5,100%,82%,1) 0px, transparent 50%)
