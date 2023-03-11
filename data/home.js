@@ -1,11 +1,7 @@
 const data = {
   home: {
     title: "Greetings and salutations, esteemed visitor",
-    description: `Behold, the gateway to the majestic web dev QR code.
-                    However, to prove yourself worthy of this privilege, you must first surmount a challenge of formidable magnitude.
-                    Fear not, dear aspirant, for we offer three distinct and dazzling quizzes for you to choose from. 
-                    Show us your mettle and achieve a score of no less than four points to gain entry into our esteemed ranks. The glory and splendor that await you within are truly beyond compare.
-                    Are you ready to embark on this magnificent adventure?`,
+    description: `This is a quiz that will test your knowledge on a specific topic of your choice.$You will be presented with a series of questions, and you will have to answer them correctly to proceed.$You will be given a total of ten questions, and you will have to answer at least four of them correctly to emerge victorious.$$Are you up for the challenge? Let the excitement begin!`,
   },
 
   choose: {
@@ -25,7 +21,7 @@ const data = {
 
   music: {
     title: "Music",
-    description: `So you'e an audiophile!$$Get ready to embark on an exhilarating quiz that will put your knowledge to the test! Answer a total of ten questions and achieve a score of five or higher to emerge victorious. Are you up for the challenge? Let the excitement begin!`,
+    description: `So you're an audiophile!$$Get ready to embark on an exhilarating quiz that will put your knowledge to the test! Answer a total of ten questions and achieve a score of five or higher to emerge victorious. Are you up for the challenge? Let the excitement begin!`,
   },
 
   geography: {

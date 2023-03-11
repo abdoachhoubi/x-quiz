@@ -38,7 +38,16 @@ const Content1 = ({ title, description, logo }) => {
     <>
       <img src={logo} alt="logo" className="logo" />
       <h1 className="title">{title}</h1>
-      <p className="description">{description}</p>
+      <p className="description">
+        {description.split("$").map((e, i) => {
+          return (
+            <span key={i}>
+              {e}
+              <br />
+            </span>
+          );
+        })}
+      </p>
       <button
         className="cta"
         onClick={() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import quiz from "@/data/quiz";
 import { useRouter } from "next/router";
 import useShuffle from "@/pages/api/useShuffle";
@@ -13,6 +13,7 @@ Array.prototype.shuffle = function () {
 
 const QuizSection = ({ topic }) => {
   const router = useRouter();
+  const [shuffledQuiz, setShuffledQuiz] = useState(null);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -25,7 +26,11 @@ const QuizSection = ({ topic }) => {
     } else router.push(`/result?score=${score}`);
   };
 
-  const shuffledQuiz = quiz && quiz[topic] && useShuffle(quiz[topic]);
+  useEffect(() => {
+    if (quiz && quiz[topic]) {
+      setShuffledQuiz(quiz[topic].shuffle());
+    }
+  }, []);
 
   return (
     <>

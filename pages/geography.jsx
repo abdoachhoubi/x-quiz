@@ -33,6 +33,7 @@ const Container = ({ children, image }) => {
 };
 
 const Content1 = ({ title, description, logo }) => {
+  const router = useRouter();
   return (
     <>
       <img src={logo} alt="logo" className="logo" />

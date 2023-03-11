@@ -38,8 +38,11 @@ const Content1 = ({ title, description, logo, message }) => {
     <>
       <img src={logo} alt="logo" className="logo" />
       <h1 className="title">{title}</h1>
-      <p className="description">{description}</p>
-      <p className="description">{message}</p>
+      <p className="description">
+        {message}
+        <br />
+        {description}
+      </p>
       <button
         className="cta"
         onClick={() => {
@@ -73,9 +76,9 @@ const Result = () => {
       <Lines />
       <Container image={pic1}>
         <Content1
-          title={data.result.title}
+          title={message}
           description={data.result.description}
-          message={message}
+          message={data.result.title}
           logo={logo}
         />
       </Container>

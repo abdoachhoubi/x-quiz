@@ -31,13 +31,12 @@ const Container = ({ children, image }) => {
   );
 };
 
-const Content1 = ({ title, description, logo }) => {
+const Content1 = ({ title, logo }) => {
   const router = useRouter();
   return (
     <>
       <img src={logo} alt="logo" className="logo" />
       <h1 className="title">{title}</h1>
-      <p className="description">{description}</p>
       <button
         className="cta__choose"
         onClick={() => {
