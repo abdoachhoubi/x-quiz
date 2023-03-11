@@ -2,7 +2,7 @@ import Head from "next/head";
 import data from "@/data/home";
 import illustration from "@/public/messi.jpg";
 import logo_pic from "@/public/logo.png";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 const { src: pic1 } = illustration;
 const { src: logo } = logo_pic;
@@ -33,6 +33,7 @@ const Container = ({ children, image }) => {
 };
 
 const Content1 = ({ title, description, logo }) => {
+  const router = useRouter();
   return (
     <>
       <img src={logo} alt="logo" className="logo" />
@@ -41,7 +42,7 @@ const Content1 = ({ title, description, logo }) => {
       <button
         className="cta"
         onClick={() => {
-          Router.push("/quiz?topic=football");
+          router.push("/quiz?topic=football");
         }}
       >
         Start

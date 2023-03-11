@@ -1,39 +1,52 @@
 import React, { useState } from "react";
 import quiz from "@/data/quiz";
-import logo_pic from "@/public/logo.png";
-import Router from "next/router";
-const { src: logo } = logo_pic;
+import { useRouter } from "next/router";
+import useShuffle from "@/pages/api/useShuffle";
 
-const QuizSection = ({ data, topic }) => {
+Array.prototype.shuffle = function () {
+  for (let i = this.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [this[i], this[j]] = [this[j], this[i]];
+  }
+  return this;
+};
+
+const QuizSection = ({ topic }) => {
+  const router = useRouter();
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const handleQuiz = (option, index) => {
+  const handleQuiz = (option) => {
     if (option.correct) {
       setScore(score + 1);
     }
     if (currentQuestion < quiz[topic].length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else Router.push(`/result?score=${score}`);
+    } else router.push(`/result?score=${score}`);
   };
+
+  const shuffledQuiz = quiz && quiz[topic] && useShuffle(quiz[topic]);
 
   return (
     <>
       <h2 className="score">Score {score}</h2>
       <h1 className="quiz__question">
-        {quiz[topic][currentQuestion].question}
+        {quiz && quiz[topic] && quiz[topic][currentQuestion]?.question}
       </h1>
-      {quiz[topic][currentQuestion].options.map((option, index) => {
-        return (
-          <button
-            key={index}
-            className="cta__choose"
-            onClick={() => handleQuiz(option, index)}
-          >
-            {option.option}
-          </button>
-        );
-      })}
+      {shuffledQuiz &&
+        shuffledQuiz[currentQuestion]?.options
+          ?.shuffle()
+          .map((option, index) => {
+            return (
+              <button
+                key={index}
+                className="cta__choose"
+                onClick={() => handleQuiz(option, index)}
+              >
+                {option?.option}
+              </button>
+            );
+          })}
     </>
   );
 };

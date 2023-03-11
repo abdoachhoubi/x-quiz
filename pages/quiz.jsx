@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import data from "@/data/home";
 import logo_pic from "@/public/logo.png";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 import illu1 from "@/public/messi.jpg";
 import illu2 from "@/public/geo.png";
@@ -41,7 +41,7 @@ const Container = ({ children, image }) => {
   );
 };
 
-const Content1 = ({ title, description, logo, topic }) => {
+const Content1 = ({ logo, topic }) => {
   return (
     <>
       <img src={logo} alt="logo" className="logo" />
@@ -51,8 +51,9 @@ const Content1 = ({ title, description, logo, topic }) => {
 };
 
 const quiz = () => {
+  const router = useRouter();
   let picture;
-  switch (Router.query.topic) {
+  switch (router.query.topic) {
     case "history":
       picture = pic4;
       break;
@@ -81,7 +82,7 @@ const quiz = () => {
           title={data.home.title}
           description={data.home.description}
           logo={logo}
-          topic={Router.query.topic}
+          topic={router.query.topic}
         />
       </Container>
     </>

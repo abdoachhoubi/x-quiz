@@ -2,7 +2,7 @@ import Head from "next/head";
 import data from "@/data/home";
 import illustration from "@/public/geo.png";
 import logo_pic from "@/public/logo.png";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 const { src: pic1 } = illustration;
 const { src: logo } = logo_pic;
@@ -41,7 +41,7 @@ const Content1 = ({ title, description, logo }) => {
       <button
         className="cta"
         onClick={() => {
-          Router.push("/quiz?topic=geography");
+          router.push("/quiz?topic=geography");
         }}
       >
         Start

@@ -2,7 +2,7 @@ import Head from "next/head";
 import data from "@/data/home";
 import illustration from "@/public/illustration.jpg";
 import logo_pic from "@/public/logo.png";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 const { src: pic1 } = illustration;
 const { src: logo } = logo_pic;
@@ -33,6 +33,7 @@ const Container = ({ children, image }) => {
 };
 
 const Content1 = ({ title, description, logo, message }) => {
+  const router = useRouter();
   return (
     <>
       <img src={logo} alt="logo" className="logo" />
@@ -42,7 +43,7 @@ const Content1 = ({ title, description, logo, message }) => {
       <button
         className="cta"
         onClick={() => {
-          Router.push("/");
+          router.push("/");
         }}
       >
         Start again
@@ -52,7 +53,8 @@ const Content1 = ({ title, description, logo, message }) => {
 };
 
 const Result = () => {
-  const score = Router.query.score;
+  const router = useRouter();
+  const score = router.query.score;
   let message = "";
   if (score < 4) {
     message =
