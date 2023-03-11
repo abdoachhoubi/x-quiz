@@ -1,6 +1,6 @@
 import Head from "next/head";
 import data from "@/data/home";
-import illustration from "@/public/webdev.png";
+import illustration from "@/public/illustration.jpg";
 import logo_pic from "@/public/logo.png";
 import { useRouter } from "next/router";
 
@@ -49,34 +49,18 @@ const Content1 = ({ title, description, logo }) => {
         })}
       </p>
       <button
-        className="cta__choose"
+        className="cta"
         onClick={() => {
-          router.push("/quizgame");
+          router.push("/choose");
         }}
       >
-        Quiz
-      </button>
-      <button
-        className="cta__choose"
-        onClick={() => {
-          router.push("/memory");
-        }}
-      >
-        Memory Game
-      </button>
-      <button
-        className="cta__choose"
-        onClick={() => {
-          router.push("/xoxo");
-        }}
-      >
-        XOXO
+        Enter
       </button>
     </>
   );
 };
 
-export default function Home() {
+export default function Quizgame() {
   return (
     <>
       <Head>
@@ -87,8 +71,8 @@ export default function Home() {
       <Lines />
       <Container image={pic1}>
         <Content1
-          title={data.intro.title}
-          description={data.intro.description}
+          title={data.home.title}
+          description={data.home.description}
           logo={logo}
         />
       </Container>

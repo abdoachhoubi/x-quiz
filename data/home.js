@@ -1,7 +1,11 @@
 const data = {
+  intro: {
+    title: "Welcome to the Web & Mobile development club",
+    description: "We have 3 different games, choose what suites you best!",
+  },
   home: {
     title: "Greetings and salutations, esteemed visitor",
-    description: `This is a quiz that will test your knowledge on a specific topic of your choice.$You will be presented with a series of questions, and you will have to answer them correctly to proceed.$You will be given a total of ten questions, and you will have to answer at least four of them correctly to emerge victorious.$$Are you up for the challenge? Let the excitement begin!`,
+    description: `This is a quiz that will test your knowledge on a specific topic of your choice.$$You will be given a total of  10  questions, and you will have to answer at least  4  of them correctly to emerge victorious.$$Are you up for the challenge? Let the excitement begin!`,
   },
 
   choose: {
