@@ -97,9 +97,14 @@ function TicTacToe() {
           )}
         </div>
         {winner && (
-          <Link href="/qr" className="button cta__choose">
-            Scan The QR Code
-          </Link>
+          <>
+            <Link href="/qr" className="button cta__choose">
+              Scan The QR Code
+            </Link>
+            <Link href="/" className="button cta__choose">
+              Back To Home
+            </Link>
+          </>
         )}
       </section>
       <section className="cover particles">
@@ -125,6 +130,12 @@ const Xoxo = () => {
       </Head>
       <Lines />
       <TicTacToe />
+      <div
+        className="body"
+        onClick={(e) => {
+          e.bubbles = false;
+        }}
+      ></div>
     </>
   );
 };

@@ -54,15 +54,7 @@ const Content1 = ({ title, description, logo }) => {
           router.push("/quizgame");
         }}
       >
-        Quiz
-      </button>
-      <button
-        className="cta__choose"
-        onClick={() => {
-          router.push("/memory");
-        }}
-      >
-        Memory Game
+        Quiz - Single Player
       </button>
       <button
         className="cta__choose"
@@ -70,7 +62,7 @@ const Content1 = ({ title, description, logo }) => {
           router.push("/xoxo");
         }}
       >
-        XOXO
+        XOXO - 2 Players
       </button>
     </>
   );

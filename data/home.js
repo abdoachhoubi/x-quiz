@@ -1,7 +1,7 @@
 const data = {
   intro: {
     title: "Welcome to the Web & Mobile development club",
-    description: "We have 3 different games, choose what suites you best!",
+    description: "We have 2 different games, choose what suites you best!",
   },
   home: {
     title: "Greetings and salutations, esteemed visitor",

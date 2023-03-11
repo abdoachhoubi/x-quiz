@@ -35,9 +35,10 @@ header
 .container
     width: calc( 100% - 100px )
     height: calc( 100% - 100px )
-    position: absolute
+    position: fixed
     top: 50px
     left: 50px
+    z-index: 100
     @include flex(row, center, space-between)
     .content
         @include flex(column, flex-start, space-around)
@@ -89,6 +90,7 @@ header
     justify-content: center !important
 
 .TicTacToe
+    z-index: 10
     display: flex
     flex-direction: column
     align-items: center
@@ -136,10 +138,89 @@ header
 #tsparticles
     z-index: -1
 
-body
+.body
+    pointer-events: none
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -2
+    width: 100vw
+    height: 100vh
     background-color: #000
 
-.content
+.center
     background-color: #fff
     background: linear-gradient(150deg, #1CD679 0%, #08ffb5 50%, #08ffb5 100%)
     border-radius: 10px
+
+
+// Memo
+
+.memory-game-grid 
+    width: 60%
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    grid-template-rows: auto
+    gap: 10px 
+    margin-top: 20px 
+    justify-self: center
+    align-self: center
+.memory-game-image-container 
+    position: relative 
+    width: 80px 
+    height: 80px 
+    perspective: 1000px 
+    &.flipped 
+        .memory-game-image-front 
+            transform: rotateY(180deg) 
+        .memory-game-image-back 
+            transform: rotateY(0) 
+.memory-game-image-front,
+.memory-game-image-back 
+    position: absolute 
+    top: 0 
+    left: 0 
+    width: 100% 
+    height: 100% 
+    backface-visibility: hidden 
+.memory-game-image-front 
+    background-color: #333 
+.memory-game-image-back 
+    transform: rotateY(180deg) 
+    img 
+        width: 100% 
+        height: 100% 
+        object-fit: cover 
+p 
+    font-size: 20px 
+    margin-top: 20px 
+    span 
+        font-weight: bold 
+
+
+// QR Code
+
+.qr__container
+    width: 100vw
+    height: 100vh
+    @include flex(column, center, center)
+    .qr__code
+        height: 50%
+        width: auto
+        background-color: #fff
+        border-radius: 10px
+    .button
+        font-size: 1.6rem
+        width: 280px
+        height: 60px
+        outline: none
+        border: none
+        background-color: #000
+        color: #fff
+        transition: all .3s ease
+        @include flex(row, center, center)
+        margin-top: 5%
+        &:hover
+            background-color: #fff
+            color: #000
+            border: 1px solid #000

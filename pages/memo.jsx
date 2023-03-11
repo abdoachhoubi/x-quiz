@@ -1,8 +1,9 @@
 import Head from "next/head";
 import data from "@/data/home";
-import illustration from "@/public/illustration.jpg";
+import illustration from "@/public/webdev.png";
 import logo_pic from "@/public/logo.png";
 import { useRouter } from "next/router";
+import MemoryGame from "@/Components/Memo";
 
 const { src: pic1 } = illustration;
 const { src: logo } = logo_pic;
@@ -24,7 +25,9 @@ const Lines = ({ top }) => {
 const Container = ({ children, image }) => {
   return (
     <main className="container">
-      <section className="content">{children}</section>
+      <section className="content">
+        <MemoryGame />
+      </section>
       <section className="cover">
         <img className="cover__image" src={image} alt="cover image" />
       </section>
@@ -32,48 +35,51 @@ const Container = ({ children, image }) => {
   );
 };
 
-const Content1 = ({ title, description, logo, message }) => {
+const Content1 = ({ title, description, logo }) => {
   const router = useRouter();
   return (
     <>
       <img src={logo} alt="logo" className="logo" />
       <h1 className="title">{title}</h1>
       <p className="description">
-        {message}
-        <br />
-        {description}
+        {description.split("$").map((e, i) => {
+          return (
+            <span key={i}>
+              {e}
+              <br />
+            </span>
+          );
+        })}
       </p>
       <button
-        className="cta"
+        className="cta__choose"
         onClick={() => {
-          router.push("/qr");
+          router.push("/quizgame");
         }}
       >
-        Scan the QR code
+        Quiz
       </button>
       <button
-        className="cta"
+        className="cta__choose"
         onClick={() => {
-          router.push("/");
+          router.push("/memo");
         }}
       >
-        Start again
+        Memory Game
+      </button>
+      <button
+        className="cta__choose"
+        onClick={() => {
+          router.push("/xoxo");
+        }}
+      >
+        XOXO
       </button>
     </>
   );
 };
 
-const Result = () => {
-  const router = useRouter();
-  const score = router.query.score;
-  let message = "";
-  if (score < 4) {
-    message =
-      "Unfortunately, your worthiness does not meet the required criteria to access the privilege of scanning our exquisite QR code.";
-  } else {
-    message =
-      "Congratulations! You have been granted access to the privilege of scanning our exquisite QR code.";
-  }
+export default function Memo() {
   return (
     <>
       <Head>
@@ -84,14 +90,11 @@ const Result = () => {
       <Lines />
       <Container image={pic1}>
         <Content1
-          title={message}
-          description={data.result.description}
-          message={data.result.title}
+          title={data.intro.title}
+          description={data.intro.description}
           logo={logo}
         />
       </Container>
     </>
   );
-};
-
-export default Result;
+}
